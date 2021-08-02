@@ -1,6 +1,3 @@
-![](https://komarev.com/ghpvc/?username=amalbosemathew)
-
-### Hello folks, 👋
 
 ```
 Welcome to my Website. ✨ ✨ ✨
