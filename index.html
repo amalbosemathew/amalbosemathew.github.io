@@ -1,284 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Senior DevOps Engineer</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <title>Amal Bose Mathew | Senior AWS DevOps Engineer</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
 
   <style>
+
     *{
       margin:0;
       padding:0;
       box-sizing:border-box;
+      font-family:'Inter',sans-serif;
     }
 
     body{
-      font-family:'Inter',sans-serif;
       background:#070710;
-      color:#fff;
+      color:white;
       overflow-x:hidden;
     }
 
-    a{
-      text-decoration:none;
-      color:inherit;
-    }
-
-    .bg{
+    body::before{
+      content:"";
       position:fixed;
-      width:100%;
-      height:100%;
+      inset:0;
       background:
-        radial-gradient(circle at top left,#7b2ff744,transparent 35%),
-        radial-gradient(circle at bottom right,#00c6ff33,transparent 30%),
-        #070710;
+        radial-gradient(circle at 20% 20%, rgba(123,47,247,0.25), transparent 40%),
+        radial-gradient(circle at 80% 30%, rgba(0,198,255,0.18), transparent 40%),
+        radial-gradient(circle at 50% 80%, rgba(0,255,157,0.12), transparent 50%);
       z-index:-2;
     }
 
-    .grid{
-      position:fixed;
-      inset:0;
-      background-image:
-      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-      background-size:40px 40px;
-      z-index:-1;
-    }
+    a{ text-decoration:none; color:inherit; }
 
     nav{
-      width:100%;
-      padding:25px 10%;
       display:flex;
       justify-content:space-between;
-      align-items:center;
+      padding:20px 10%;
+      backdrop-filter:blur(12px);
+      background:rgba(0,0,0,0.4);
       position:sticky;
       top:0;
-      backdrop-filter:blur(14px);
-      background:rgba(7,7,16,0.5);
-      border-bottom:1px solid rgba(255,255,255,0.05);
+      z-index:10;
     }
 
     .logo{
-      font-size:24px;
       font-weight:800;
-      background:linear-gradient(90deg,#9d4edd,#00c6ff);
+      background:linear-gradient(90deg,#9d4edd,#00c6ff,#00ff9d);
       -webkit-background-clip:text;
       -webkit-text-fill-color:transparent;
     }
 
-    nav ul{
-      display:flex;
-      gap:30px;
-      list-style:none;
-    }
-
-    nav ul li{
+    nav a{
+      margin-left:20px;
       color:#aaa;
-      transition:.3s;
     }
 
-    nav ul li:hover{
-      color:#fff;
-    }
+    nav a:hover{ color:white; }
 
     .hero{
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding:0 10%;
-      gap:60px;
-    }
-
-    .hero-text{
-      flex:1;
-    }
-
-    .tag{
-      display:inline-block;
-      padding:8px 18px;
-      background:rgba(157,78,221,0.15);
-      border:1px solid rgba(157,78,221,0.4);
-      border-radius:30px;
-      color:#c77dff;
-      margin-bottom:25px;
-      font-size:14px;
+      padding:100px 10%;
+      text-align:left;
     }
 
     .hero h1{
-      font-size:72px;
-      line-height:1.05;
-      margin-bottom:20px;
-    }
-
-    .hero h1 span{
-      background:linear-gradient(90deg,#9d4edd,#00c6ff);
+      font-size:60px;
+      background:linear-gradient(90deg,#fff,#9d4edd,#00c6ff,#00ff9d);
       -webkit-background-clip:text;
       -webkit-text-fill-color:transparent;
     }
 
     .hero p{
+      margin-top:20px;
       color:#aaa;
+      max-width:700px;
       line-height:1.8;
-      max-width:600px;
-      margin-bottom:35px;
     }
 
-    .buttons{
+    .btns{
+      margin-top:25px;
       display:flex;
-      gap:20px;
+      gap:15px;
+      flex-wrap:wrap;
     }
 
     .btn{
-      padding:15px 28px;
-      border-radius:14px;
+      padding:12px 18px;
+      border-radius:10px;
       font-weight:600;
-      transition:.3s;
     }
 
     .primary{
-      background:linear-gradient(90deg,#7b2ff7,#00c6ff);
-    }
-
-    .primary:hover{
-      transform:translateY(-4px);
-      box-shadow:0 10px 30px rgba(123,47,247,.4);
+      background:linear-gradient(90deg,#7b2ff7,#00c6ff,#00ff9d);
     }
 
     .secondary{
-      border:1px solid rgba(255,255,255,0.1);
-      background:rgba(255,255,255,0.03);
-    }
-
-    .secondary:hover{
-      background:rgba(255,255,255,0.08);
-    }
-
-    .hero-card{
-      width:420px;
-      height:420px;
-      border-radius:30px;
-      background:
-        linear-gradient(145deg,
-        rgba(255,255,255,0.08),
-        rgba(255,255,255,0.02));
-      backdrop-filter:blur(30px);
-      border:1px solid rgba(255,255,255,0.08);
-      position:relative;
-      overflow:hidden;
-      box-shadow:0 20px 60px rgba(0,0,0,0.4);
-    }
-
-    .glow{
-      position:absolute;
-      width:250px;
-      height:250px;
-      border-radius:50%;
-      background:#7b2ff7;
-      filter:blur(120px);
-      opacity:.5;
-      top:-50px;
-      right:-50px;
-    }
-
-    .terminal{
-      position:absolute;
-      inset:25px;
-      background:#05050d;
-      border-radius:20px;
-      padding:25px;
-      font-family:monospace;
-      color:#00ff9d;
-      border:1px solid rgba(255,255,255,0.05);
-    }
-
-    .terminal p{
-      margin-bottom:12px;
-      color:#00ff9d;
+      border:1px solid #7b2ff7;
+      background:#111827;
     }
 
     section{
-      padding:120px 10%;
+      padding:80px 10%;
     }
 
-    .section-title{
-      font-size:42px;
-      margin-bottom:50px;
+    .title{
+      font-size:32px;
+      margin-bottom:30px;
     }
 
-    .cards{
+    .grid{
       display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-      gap:25px;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:20px;
     }
 
     .card{
+      padding:25px;
+      border-radius:18px;
       background:rgba(255,255,255,0.03);
-      border:1px solid rgba(255,255,255,0.06);
-      border-radius:24px;
-      padding:30px;
-      transition:.4s;
-      backdrop-filter:blur(20px);
+      border:1px solid rgba(123,47,247,0.2);
+      transition:0.3s;
     }
 
     .card:hover{
-      transform:translateY(-10px);
-      border-color:#7b2ff7;
-      box-shadow:0 15px 40px rgba(123,47,247,.25);
+      transform:translateY(-8px);
+      box-shadow:0 20px 40px rgba(123,47,247,0.2);
     }
 
     .card h3{
-      margin-bottom:18px;
-      font-size:22px;
+      margin-bottom:10px;
+      color:#fff;
     }
 
     .card p{
       color:#aaa;
-      line-height:1.7;
+      line-height:1.6;
+      font-size:14px;
     }
 
     .skills{
       display:flex;
       flex-wrap:wrap;
-      gap:15px;
+      gap:10px;
     }
 
     .skill{
-      padding:12px 18px;
-      border-radius:14px;
-      background:rgba(123,47,247,0.15);
-      border:1px solid rgba(123,47,247,0.3);
-      color:#d7b3ff;
+      padding:10px 14px;
+      border-radius:10px;
+      background:rgba(123,47,247,0.2);
+      border:1px solid rgba(255,255,255,0.1);
+      font-size:13px;
+    }
+
+    .contact{
+      text-align:center;
+    }
+
+    .contact .btns{
+      justify-content:center;
     }
 
     footer{
-      padding:60px 10%;
+      padding:40px;
       text-align:center;
       color:#777;
       border-top:1px solid rgba(255,255,255,0.05);
+      margin-top:60px;
     }
 
-    @media(max-width:980px){
-
-      .hero{
-        flex-direction:column;
-        padding-top:80px;
-      }
-
-      .hero h1{
-        font-size:48px;
-      }
-
-      .hero-card{
-        width:100%;
-      }
-
-      nav ul{
-        display:none;
-      }
+    .wa{
+      position:fixed;
+      right:20px;
+      bottom:20px;
+      background:#25D366;
+      width:55px;
+      height:55px;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:22px;
     }
 
   </style>
@@ -286,162 +192,152 @@
 
 <body>
 
-<div class="bg"></div>
-<div class="grid"></div>
-
 <nav>
-  <div class="logo">DEVOPS.</div>
-
-  <ul>
-    <li><a href="#">Home</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
+  <div class="logo">AWS DEVOPS</div>
+  <div>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Tools</a>
+    <a href="#contact">Contact</a>
+  </div>
 </nav>
 
-<section class="hero">
+<!-- HERO -->
+<div class="hero">
 
-  <div class="hero-text">
+  <h1>Amal Bose Mathew</h1>
 
-    <div class="tag">
-      Senior DevOps Engineer
-    </div>
+  <p>
+    Senior AWS DevOps Engineer with 6+ years of experience building scalable,
+    secure, and highly available cloud-native systems using Kubernetes, Terraform,
+    CI/CD automation, and enterprise DevSecOps practices.
+  </p>
 
-    <h1>
-      Building
-      <span>Cloud Infrastructure</span>
-      at Scale
-    </h1>
+  <div class="btns">
 
-    <p>
-      Passionate DevOps Engineer specializing in Kubernetes,
-      AWS, Terraform, CI/CD automation, observability,
-      and scalable infrastructure engineering.
-      Transforming complex systems into reliable platforms.
-    </p>
+    <a class="btn primary" href="#projects">View Projects</a>
 
-    <div class="buttons">
-      <a href="#" class="btn primary">
-        View Projects
-      </a>
-
-      <a href="#" class="btn secondary">
-        Download Resume
-      </a>
-    </div>
+    <!-- ✅ FIXED RESUME BUTTON -->
+    <a class="btn secondary"
+       href="resume.pdf"
+       download="Amal_Bose_Mathew_Resume.pdf"
+       onclick="if(!this.href.includes('.pdf')) window.open(this.href);">
+      Download Resume
+    </a>
 
   </div>
 
-  <div class="hero-card">
+</div>
 
-    <div class="glow"></div>
-
-    <div class="terminal">
-      <p>$ kubectl get pods</p>
-      <p>✔ production-api running</p>
-      <p>✔ monitoring-stack running</p>
-      <p>✔ ci-cd-pipeline healthy</p>
-      <br>
-      <p>$ terraform apply</p>
-      <p>Infrastructure deployed successfully.</p>
-      <br>
-      <p>$ docker ps</p>
-      <p>12 containers running...</p>
-    </div>
-
-  </div>
-
-</section>
-
+<!-- PROJECTS -->
 <section id="projects">
 
-  <h2 class="section-title">Featured Projects</h2>
+  <div class="title">AWS Production Projects</div>
 
-  <div class="cards">
+  <div class="grid">
 
     <div class="card">
-      <h3>Multi-Cloud Kubernetes Platform</h3>
-      <p>
-        Designed and automated scalable Kubernetes
-        clusters across AWS and GCP using Terraform,
-        Helm, and GitOps workflows.
-      </p>
+      <h3>EKS Multi-Region Platform</h3>
+    <p>
+    Built a highly available multi-region Kubernetes platform on AWS EKS using GitOps-based deployments with ArgoCD and Helm.
+    Designed scalable cluster architecture with auto-scaling node groups and high availability across multiple AWS regions.
+    Integrated Istio service mesh for traffic management, secure service-to-service communication, and mTLS encryption.
+    Enabled centralized observability using Prometheus, Grafana, and AWS CloudWatch for monitoring cluster health and performance.
+    </p> 
     </div>
 
     <div class="card">
-      <h3>Enterprise CI/CD Pipeline</h3>
-      <p>
-        Built secure CI/CD pipelines using GitHub Actions,
-        ArgoCD, Jenkins, and Docker reducing deployment
-        time by 70%.
-      </p>
+      <h3>CI/CD Automation Platform</h3>
+    <p>
+    Designed a fully automated CI/CD platform using GitHub Actions, AWS CodePipeline, CodeBuild, CodeCommit, CodeDeploy.
+    Integrated SonarQube for static code analysis and security vulnerability scanning, along with linting tools for code quality enforcement.    Achieved zero-downtime deployments using blue/green and rolling deployment strategies with CodeDeploy.
+    Added automated quality gates, security checks, and approval workflows to ensure production-ready releases.
+    </p>
     </div>
 
     <div class="card">
-      <h3>Observability Stack</h3>
-      <p>
-        Implemented Prometheus, Grafana, Loki,
-        and OpenTelemetry for real-time monitoring
-        and distributed tracing.
-      </p>
+      <h3>Terraform Infrastructure Factory</h3>
+    <p>
+    Built a scalable Infrastructure-as-Code platform using Terraform for provisioning AWS VPC, IAM, EKS, and RDS across multiple environments.  
+    Designed reusable modules with environment separation for Dev, QA, and Production using workspaces and structured variables.  
+    Implemented secure secrets management using AWS Secrets Manager and SSM Parameter Store with no hardcoded credentials.  
+    </p>
     </div>
 
+    <div class="card">
+      <h3>Observability & SRE Monitoring Stack</h3>
+    <p>
+    Built a full observability platform using Prometheus, Grafana, Filebeat, AWS CloudWatch, AWS X-Ray, Elasticsearch, and Kibana.
+    Implemented centralized logging, metrics, and distributed tracing for end-to-end microservices visibility.
+    Streamed logs using Filebeat into Elasticsearch for real-time indexing and troubleshooting via Kibana dashboards.
+    Configured alerting pipelines with Slack notifications and email alerts for real-time incident response and operational awareness.
+    </p>
+    </div>
+
+    <div class="card">
+        <h3>Serverless Event-Driven Architecture</h3>
+    <p>
+    Designed a scalable serverless architecture using AWS Lambda, API Gateway, SQS, SNS, EventBridge, and AWS SAM.
+    Developed and deployed infrastructure-as-code using AWS SAM templates for serverless application provisioning and versioned deployments.
+    Built event-driven microservices with asynchronous processing and decoupled communication between services.
+    Implemented fault-tolerant workflows with retries, dead-letter queues (DLQ), and idempotent processing for reliable execution at scale.
+    </p>
+    </div>
+     <div class="card">
+    <h3>AWS Control Tower Landing Zone with IPAM & SSO</h3>
+    <p>
+    Built an AWS multi-account Landing Zone using Control Tower with Account Factory (AFT) for automated account provisioning.
+    Implemented AWS IPAM for centralized IP management across accounts and regions.
+    Enabled IAM Identity Center (SSO) for secure, centralized access control.
+    Standardized governance using AWS Organizations, SCPs, and CloudFormation StackSets for consistent multi-account deployments.
+  </p>
+</div>
   </div>
 
 </section>
 
+<!-- SKILLS -->
 <section id="skills">
 
-  <h2 class="section-title">Tech Stack</h2>
+  <div class="title">DevOps Tools & AWS Stack</div>
 
   <div class="skills">
 
+    <div class="skill">AWS</div>
     <div class="skill">Kubernetes</div>
     <div class="skill">Docker</div>
     <div class="skill">Terraform</div>
-    <div class="skill">AWS</div>
-    <div class="skill">Azure</div>
+    <div class="skill">ArgoCD</div>
     <div class="skill">GitHub Actions</div>
     <div class="skill">Jenkins</div>
-    <div class="skill">Linux</div>
     <div class="skill">Prometheus</div>
     <div class="skill">Grafana</div>
-    <div class="skill">Ansible</div>
-    <div class="skill">Python</div>
+    <div class="skill">Linux</div>
 
   </div>
 
 </section>
 
-<section id="contact">
+<!-- CONTACT -->
+<section id="contact" class="contact">
 
-  <h2 class="section-title">Let's Build Something Amazing</h2>
+  <div class="title">Let’s Connect</div>
 
-  <div class="card">
-    <p>
-      Available for freelance, consulting,
-      cloud architecture, DevOps transformation,
-      and platform engineering opportunities.
-    </p>
+  <div class="btns">
 
-    <br>
+    <a class="btn primary" href="tel:+971567366400">Call</a>
+    <a class="btn secondary" href="mailto:mathew.amalbose@gmail.com">Email</a>
+    <a class="btn secondary" target="_blank" href="https://github.com/amalbosemathew">GitHub</a>
+    <a class="btn secondary" target="_blank" href="https://www.linkedin.com/in/amal-bose-mathew/">LinkedIn</a>
 
-    <div class="buttons">
-      <a href="mailto:you@example.com" class="btn primary">
-        Contact Me
-      </a>
-
-      <a href="https://github.com/" class="btn secondary">
-        GitHub
-      </a>
-    </div>
   </div>
 
 </section>
+
+<!-- WHATSAPP -->
+<a class="wa" href="https://wa.me/971567366400" target="_blank">💬</a>
 
 <footer>
-  © 2026 Senior DevOps Engineer Portfolio • Built with HTML & CSS
+  © 2026 Amal Bose Mathew • AWS Senior DevOps Engineer
 </footer>
 
 </body>
