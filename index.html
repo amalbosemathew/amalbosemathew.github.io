@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Senior DevOps Engineer</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:'Inter',sans-serif;
+      background:#070710;
+      color:#fff;
+      overflow-x:hidden;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    .bg{
+      position:fixed;
+      width:100%;
+      height:100%;
+      background:
+        radial-gradient(circle at top left,#7b2ff744,transparent 35%),
+        radial-gradient(circle at bottom right,#00c6ff33,transparent 30%),
+        #070710;
+      z-index:-2;
+    }
+
+    .grid{
+      position:fixed;
+      inset:0;
+      background-image:
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size:40px 40px;
+      z-index:-1;
+    }
+
+    nav{
+      width:100%;
+      padding:25px 10%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      position:sticky;
+      top:0;
+      backdrop-filter:blur(14px);
+      background:rgba(7,7,16,0.5);
+      border-bottom:1px solid rgba(255,255,255,0.05);
+    }
+
+    .logo{
+      font-size:24px;
+      font-weight:800;
+      background:linear-gradient(90deg,#9d4edd,#00c6ff);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+
+    nav ul{
+      display:flex;
+      gap:30px;
+      list-style:none;
+    }
+
+    nav ul li{
+      color:#aaa;
+      transition:.3s;
+    }
+
+    nav ul li:hover{
+      color:#fff;
+    }
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:0 10%;
+      gap:60px;
+    }
+
+    .hero-text{
+      flex:1;
+    }
+
+    .tag{
+      display:inline-block;
+      padding:8px 18px;
+      background:rgba(157,78,221,0.15);
+      border:1px solid rgba(157,78,221,0.4);
+      border-radius:30px;
+      color:#c77dff;
+      margin-bottom:25px;
+      font-size:14px;
+    }
+
+    .hero h1{
+      font-size:72px;
+      line-height:1.05;
+      margin-bottom:20px;
+    }
+
+    .hero h1 span{
+      background:linear-gradient(90deg,#9d4edd,#00c6ff);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+
+    .hero p{
+      color:#aaa;
+      line-height:1.8;
+      max-width:600px;
+      margin-bottom:35px;
+    }
+
+    .buttons{
+      display:flex;
+      gap:20px;
+    }
+
+    .btn{
+      padding:15px 28px;
+      border-radius:14px;
+      font-weight:600;
+      transition:.3s;
+    }
+
+    .primary{
+      background:linear-gradient(90deg,#7b2ff7,#00c6ff);
+    }
+
+    .primary:hover{
+      transform:translateY(-4px);
+      box-shadow:0 10px 30px rgba(123,47,247,.4);
+    }
+
+    .secondary{
+      border:1px solid rgba(255,255,255,0.1);
+      background:rgba(255,255,255,0.03);
+    }
+
+    .secondary:hover{
+      background:rgba(255,255,255,0.08);
+    }
+
+    .hero-card{
+      width:420px;
+      height:420px;
+      border-radius:30px;
+      background:
+        linear-gradient(145deg,
+        rgba(255,255,255,0.08),
+        rgba(255,255,255,0.02));
+      backdrop-filter:blur(30px);
+      border:1px solid rgba(255,255,255,0.08);
+      position:relative;
+      overflow:hidden;
+      box-shadow:0 20px 60px rgba(0,0,0,0.4);
+    }
+
+    .glow{
+      position:absolute;
+      width:250px;
+      height:250px;
+      border-radius:50%;
+      background:#7b2ff7;
+      filter:blur(120px);
+      opacity:.5;
+      top:-50px;
+      right:-50px;
+    }
+
+    .terminal{
+      position:absolute;
+      inset:25px;
+      background:#05050d;
+      border-radius:20px;
+      padding:25px;
+      font-family:monospace;
+      color:#00ff9d;
+      border:1px solid rgba(255,255,255,0.05);
+    }
+
+    .terminal p{
+      margin-bottom:12px;
+      color:#00ff9d;
+    }
+
+    section{
+      padding:120px 10%;
+    }
+
+    .section-title{
+      font-size:42px;
+      margin-bottom:50px;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:25px;
+    }
+
+    .card{
+      background:rgba(255,255,255,0.03);
+      border:1px solid rgba(255,255,255,0.06);
+      border-radius:24px;
+      padding:30px;
+      transition:.4s;
+      backdrop-filter:blur(20px);
+    }
+
+    .card:hover{
+      transform:translateY(-10px);
+      border-color:#7b2ff7;
+      box-shadow:0 15px 40px rgba(123,47,247,.25);
+    }
+
+    .card h3{
+      margin-bottom:18px;
+      font-size:22px;
+    }
+
+    .card p{
+      color:#aaa;
+      line-height:1.7;
+    }
+
+    .skills{
+      display:flex;
+      flex-wrap:wrap;
+      gap:15px;
+    }
+
+    .skill{
+      padding:12px 18px;
+      border-radius:14px;
+      background:rgba(123,47,247,0.15);
+      border:1px solid rgba(123,47,247,0.3);
+      color:#d7b3ff;
+    }
+
+    footer{
+      padding:60px 10%;
+      text-align:center;
+      color:#777;
+      border-top:1px solid rgba(255,255,255,0.05);
+    }
+
+    @media(max-width:980px){
+
+      .hero{
+        flex-direction:column;
+        padding-top:80px;
+      }
+
+      .hero h1{
+        font-size:48px;
+      }
+
+      .hero-card{
+        width:100%;
+      }
+
+      nav ul{
+        display:none;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+<div class="bg"></div>
+<div class="grid"></div>
+
+<nav>
+  <div class="logo">DEVOPS.</div>
+
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+
+  <div class="hero-text">
+
+    <div class="tag">
+      Senior DevOps Engineer
+    </div>
+
+    <h1>
+      Building
+      <span>Cloud Infrastructure</span>
+      at Scale
+    </h1>
+
+    <p>
+      Passionate DevOps Engineer specializing in Kubernetes,
+      AWS, Terraform, CI/CD automation, observability,
+      and scalable infrastructure engineering.
+      Transforming complex systems into reliable platforms.
+    </p>
+
+    <div class="buttons">
+      <a href="#" class="btn primary">
+        View Projects
+      </a>
+
+      <a href="#" class="btn secondary">
+        Download Resume
+      </a>
+    </div>
+
+  </div>
+
+  <div class="hero-card">
+
+    <div class="glow"></div>
+
+    <div class="terminal">
+      <p>$ kubectl get pods</p>
+      <p>✔ production-api running</p>
+      <p>✔ monitoring-stack running</p>
+      <p>✔ ci-cd-pipeline healthy</p>
+      <br>
+      <p>$ terraform apply</p>
+      <p>Infrastructure deployed successfully.</p>
+      <br>
+      <p>$ docker ps</p>
+      <p>12 containers running...</p>
+    </div>
+
+  </div>
+
+</section>
+
+<section id="projects">
+
+  <h2 class="section-title">Featured Projects</h2>
+
+  <div class="cards">
+
+    <div class="card">
+      <h3>Multi-Cloud Kubernetes Platform</h3>
+      <p>
+        Designed and automated scalable Kubernetes
+        clusters across AWS and GCP using Terraform,
+        Helm, and GitOps workflows.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Enterprise CI/CD Pipeline</h3>
+      <p>
+        Built secure CI/CD pipelines using GitHub Actions,
+        ArgoCD, Jenkins, and Docker reducing deployment
+        time by 70%.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Observability Stack</h3>
+      <p>
+        Implemented Prometheus, Grafana, Loki,
+        and OpenTelemetry for real-time monitoring
+        and distributed tracing.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+<section id="skills">
+
+  <h2 class="section-title">Tech Stack</h2>
+
+  <div class="skills">
+
+    <div class="skill">Kubernetes</div>
+    <div class="skill">Docker</div>
+    <div class="skill">Terraform</div>
+    <div class="skill">AWS</div>
+    <div class="skill">Azure</div>
+    <div class="skill">GitHub Actions</div>
+    <div class="skill">Jenkins</div>
+    <div class="skill">Linux</div>
+    <div class="skill">Prometheus</div>
+    <div class="skill">Grafana</div>
+    <div class="skill">Ansible</div>
+    <div class="skill">Python</div>
+
+  </div>
+
+</section>
+
+<section id="contact">
+
+  <h2 class="section-title">Let's Build Something Amazing</h2>
+
+  <div class="card">
+    <p>
+      Available for freelance, consulting,
+      cloud architecture, DevOps transformation,
+      and platform engineering opportunities.
+    </p>
+
+    <br>
+
+    <div class="buttons">
+      <a href="mailto:you@example.com" class="btn primary">
+        Contact Me
+      </a>
+
+      <a href="https://github.com/" class="btn secondary">
+        GitHub
+      </a>
+    </div>
+  </div>
+
+</section>
+
+<footer>
+  © 2026 Senior DevOps Engineer Portfolio • Built with HTML & CSS
+</footer>
+
+</body>
+</html>
