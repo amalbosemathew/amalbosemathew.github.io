@@ -1,0 +1,78 @@
+name: Decrypt and deploy to GitHub Pages
+
+# Layer 1 at-rest encryption:
+#   The repo stores only encrypted secure/*.age blobs. This workflow decrypts
+#   them at deploy time using the AGE_PRIVATE_KEY secret and publishes the
+#   decrypted static site to GitHub Pages.
+#
+# Required repository secret:
+#   AGE_PRIVATE_KEY  -> the full contents of ~/.age/portfolio-key.txt
+#                       (the line starting "AGE-SECRET-KEY-1...").
+#
+# Note: the deployed site itself is public and readable in the browser.
+# Encryption here protects the SOURCE AT REST IN THE REPO, not the live site.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout (ciphertext only)
+        uses: actions/checkout@v4
+
+      - name: Install age
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y age
+
+      - name: Write private key from secret
+        run: |
+          umask 077
+          printf '%s\n' "${{ secrets.AGE_PRIVATE_KEY }}" > "$RUNNER_TEMP/age-key.txt"
+
+      - name: Decrypt source into dist/
+        run: |
+          set -euo pipefail
+          mkdir -p dist
+          shopt -s nullglob
+          for enc in secure/*.age; do
+            base="$(basename "$enc" .age)"
+            age --decrypt --identity "$RUNNER_TEMP/age-key.txt" --output "dist/$base" "$enc"
+            echo "decrypted $enc -> dist/$base"
+          done
+
+      - name: Remove key material
+        if: always()
+        run: rm -f "$RUNNER_TEMP/age-key.txt"
+
+      - name: Verify dist has an index
+        run: test -f dist/index.html
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

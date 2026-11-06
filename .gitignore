@@ -1,0 +1,45 @@
+# --- Encryption at rest: never commit plaintext source or private keys ---
+# The plaintext site source lives locally only. The repo stores ciphertext
+# under secure/*.age, which IS committed (see the ! un-ignore rules below).
+
+# Plaintext site source (decrypt locally into these to edit)
+index.html
+project.html
+styles.css
+modern.css
+data.js
+graphics.js
+motion.js
+app.js
+project.js
+logo.svg
+robots.txt
+sitemap.xml
+resume.pdf
+
+# age private keys / any key material — must never enter the repo
+*.key
+*.agekey
+age-key*.txt
+portfolio-key*.txt
+*.identity
+
+# Local age binaries (CI installs its own)
+tools/
+
+# Decrypted build output
+dist/
+
+# Node (if ever reintroduced)
+node_modules/
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+
+# --- Un-ignore the things that MUST be committed ---
+# Encrypted blobs
+!secure/
+!secure/**
+# Public key is safe to commit
+!age-recipients.txt

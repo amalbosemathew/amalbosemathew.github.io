@@ -1,0 +1,6 @@
+# age recipients (PUBLIC keys) used to encrypt the site source at rest.
+# Public keys are safe to commit. Anyone with a public key can ENCRYPT but
+# cannot DECRYPT. Decryption requires the matching private key, which lives
+# only in ~/.age/portfolio-key.txt locally and in the GitHub Actions secret
+# AGE_PRIVATE_KEY. Never commit the private key.
+age1czmf75hddh8wl7l3p7l6qp2y5jxwpeyyyemyxfszgq0vg506uveqr6fl77
